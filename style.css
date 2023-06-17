@@ -140,7 +140,6 @@ h1 {
 .item {
     display: flex;
     width: 130px;
-    margin: 10px;
     cursor: pointer;
     justify-content: center;
     align-items: center;
