@@ -84,7 +84,7 @@ function addRandomItems() {
         "Car",
         "Bike",
         "Truck",
-        "Auto",
+        // "Auto",
         "Bus"
     ];
 
@@ -108,7 +108,7 @@ function addRandomItems() {
         let itemAlt;
 
         if (i === VehiclePositionIndex) {
-            itemImage = "/vehicles/" +
+            itemImage = "vehicles/" +
                 vehicleImage + ".svg";
             itemAlt = "vehicle";
             vehicleName.innerHTML = vehicleImage;
