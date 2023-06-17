@@ -114,8 +114,11 @@ h1 {
 }
 
 #score {
+    display: flex;
     color: var(--text-color);
     font-size: 20px;
+    padding: 30px;
+    justify-content: right;
 }
 
 .items {

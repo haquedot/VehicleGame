@@ -10,6 +10,8 @@ const openButton = document.querySelector(".open");
 const closeButton = document.querySelector(".close");
 const submitButton = document.querySelector("submit");
 const resumeButton = document.querySelector(".resume");
+const restartButton = document.querySelector(".restart");
+
 const navDiv = document.querySelector(".navDiv");
 const sidebar = document.querySelector(".sidebar");
 const item1 = document.querySelector("#item1");
@@ -22,6 +24,10 @@ startButton.addEventListener("click", function() {
     hideDisplay1();
     addRandomItems();
 
+});
+restartButton.addEventListener("click", function() {
+    hideDisplay2()
+    removeItems();
 });
 nextButton.addEventListener("click", function() {
     addRandomItems();
@@ -44,10 +50,16 @@ function hideDisplay1() {
     start.style.display = 'none';
     openDiv.style.display = 'block';
     main.style.display = 'block';
+    nextButton.style.display = "";
+
 }
 
 function hideDisplay2() {
-
+    start.style.display = '';
+    openDiv.style.display = 'none';
+    main.style.display = 'none';
+    nextButton.style.display = "none";
+    sidebar.style.display = "none"
 }
 // var i = 1;
 
@@ -108,12 +120,10 @@ function addRandomItems() {
         let itemAlt;
 
         if (i === VehiclePositionIndex) {
-            itemImage = "vehicles/" +
-                vehicleImage + ".svg";
+            itemImage = "vehicles/" + vehicleImage + ".svg";
             itemAlt = "vehicle";
-            // vehicleName.innerHTML = vehicleImage;
         } else {
-            const randomItemIndex = Math.floor(Math.random() * vehicle.length);
+            const randomItemIndex = Math.floor(Math.random() * nonVehicle.length);
             itemImage = nonVehicle[randomItemIndex];
             nonVehicle.splice(randomItemIndex, 1);
             itemAlt = "nonVehicle";
@@ -126,11 +136,38 @@ function addRandomItems() {
         itemImg.alt = itemAlt;
         itemImg.classList.add("item-img");
 
-        if (itemImage.substring(0, 8) == 'vehicles') {
+        if (itemImage.substring(0, 8) === 'vehicles') {
             console.log("vehicles");
             itemDiv.classList.add('vehicles');
         }
-        itemDiv.addEventListener("click", click);
+
+
+        // if (i === VehiclePositionIndex) {
+        //     itemImage = "vehicles/" +
+        //         vehicleImage + ".svg";
+        //     itemAlt = "vehicle";
+        //     // vehicleName.innerHTML = vehicleImage;
+        // } else {
+        //     const randomItemIndex = Math.floor(Math.random() * vehicle.length);
+        //     itemImage = nonVehicle[randomItemIndex];
+        //     nonVehicle.splice(randomItemIndex, 1);
+        //     itemAlt = "nonVehicle";
+        // }
+
+        // const itemDiv = document.createElement("div");
+        // itemDiv.classList.add("item");
+        // const itemImg = document.createElement("img");
+        // itemImg.src = itemImage;
+        // itemImg.alt = itemAlt;
+        // itemImg.classList.add("item-img");
+
+        // if (itemImage.substring(0, 8) === 'vehicles') {
+        //     console.log("vehicles");
+        //     itemDiv.classList.add('vehicles');
+        // }
+        // const clickable = document.getElementsByClassName("item");
+        // clickable.style.pointerEvents = 'auto';
+        itemDiv.addEventListener("click", clickHandler);
         itemDiv.appendChild(itemImg);
         console.log("Ki");
 
@@ -145,12 +182,13 @@ function addRandomItems() {
     }
     if (itemCount > 6) {
         removeItems();
+        hideDisplay2();
     }
 
 
 }
 
-function click(event) {
+function clickHandler(event) {
     var element = event.currentTarget;
     const spanElement = document.createElement("span");
     spanElement.classList = "mark";
@@ -166,7 +204,7 @@ function click(event) {
 
         document.getElementById("awesomeSound").play(); // Play the awesome sound
 
-        // updateScore(1); // Increment the score by 1
+        updateScore(1); // Increment the score by 1
         // const gif1 = document.getElementsByClassName("gif1");
         // if (gif1.length > 0) {
         //     gif1[0].style.display = 'block';
@@ -188,12 +226,20 @@ function click(event) {
         //     gif2[0].style.display = 'block';
         // }
     }
-    // itemDiv.removeEventListener("click", click);
+
+    // clickable.style.pointerEvents = 'none';
 
     itemCount++;
 
 }
 
+function updateScore(score) {
+    const scoreElement = document.getElementById("score");
+    const currentScore = parseInt(scoreElement.textContent.split(":")[1]);
+    const newScore = currentScore + score;
+    scoreElement.textContent = "Score: " + newScore;
+    console.log(scoreElement);
+}
 theme = document.getElementById("theme");
 theme.onclick = function() {
     document.body.classList.toggle("dark-theme");
