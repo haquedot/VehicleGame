@@ -89,14 +89,14 @@ function addRandomItems() {
     ];
 
     const nonVehicle = [
-        "fruits/apple.svg",
-        "fruits/orange.svg",
-        "fruits/bananas.svg",
-        "fruits/mango.svg",
-        "fruits/grapes.svg",
-        "fruits/watermelon.svg",
-        "fruits/strawberry.svg",
-        "fruits/pineapple.svg"
+        "nonVehicle/apple.svg",
+        "nonVehicle/orange.svg",
+        "nonVehicle/bananas.svg",
+        "nonVehicle/mango.svg",
+        "nonVehicle/grapes.svg",
+        "nonVehicle/watermelon.svg",
+        "nonVehicle/strawberry.svg",
+        "nonVehicle/pineapple.svg"
     ];
 
     const VehiclePositionIndex = Math.floor(Math.random() * itemCount);
@@ -111,7 +111,7 @@ function addRandomItems() {
             itemImage = "vehicles/" +
                 vehicleImage + ".svg";
             itemAlt = "vehicle";
-            vehicleName.innerHTML = vehicleImage;
+            // vehicleName.innerHTML = vehicleImage;
         } else {
             const randomItemIndex = Math.floor(Math.random() * vehicle.length);
             itemImage = nonVehicle[randomItemIndex];
@@ -126,8 +126,9 @@ function addRandomItems() {
         itemImg.alt = itemAlt;
         itemImg.classList.add("item-img");
 
-        if (itemImage.substring(0, 9) == 'nonVehicle') {
-            itemDiv.classList.add('nonVehicle');
+        if (itemImage.substring(0, 8) == 'vehicles') {
+            console.log("vehicles");
+            itemDiv.classList.add('vehicles');
         }
         itemDiv.addEventListener("click", click);
         itemDiv.appendChild(itemImg);
@@ -150,73 +151,48 @@ function addRandomItems() {
 }
 
 function click(event) {
-    // // Event handling code goes here
-    // var element = document.getElementsByClassName("item");
-    // var spanElements = document.querySelector("#mark");
-    // // console.log(draggedElement);
-    // // Check if the dropped item is a fruit
-    // if (element.classList.contains("nonVehicle")) {
-    //     spanElements[0].style.display = 'block';
-    //     document.getElementById("mark").innerHTML = "&#10007;"; // Add a cross mark
-    //     document.getElementById("mark").style.color = "red"; // Set color to red
-    //     document.getElementById("yuckySound").play(); // Play the yucky sound
-    //     updateScore(-1); // Decrement the score by 1
-    //     const gif2 = document.getElementsByClassName("gif2");
-    //     if (gif2.length > 0) {
-    //         gif2[0].style.display = 'block';
-    //     }
+    var element = event.currentTarget;
+    const spanElement = document.createElement("span");
+    spanElement.classList = "mark";
+    spanElement.id = "mark";
+    element.appendChild(spanElement);
 
-    // } else {
 
-    //     spanElements[0].style.display = 'block';
-    //     document.getElementById("mark").innerHTML = "&#10003;"; // Add a tick mark
-    //     document.getElementById("mark").style.color = "green"; // Set color to green
-    //     document.getElementById("awesomeSound").play(); // Play the awesome sound
+    // Check if the dropped item is a fruit
+    if (element.classList.contains("vehicles")) {
+        spanElement.style.display = 'block';
+        document.getElementById("mark").innerHTML = "&#10003;"; // Add a tick mark
+        document.getElementById("mark").style.color = "green"; // Set color to green
 
-    //     updateScore(1); // Increment the score by 1
-    //     const gif1 = document.getElementsByClassName("gif1");
-    //     if (gif1.length > 0) {
-    //         gif1[0].style.display = 'block';
-    //     }
-    //     const win = document.getElementsByClassName("win");
-    //     if (win.length > 0) {
-    //         win[0].style.display = 'block';
-    //     }
-    // }
+        document.getElementById("awesomeSound").play(); // Play the awesome sound
+
+        // updateScore(1); // Increment the score by 1
+        // const gif1 = document.getElementsByClassName("gif1");
+        // if (gif1.length > 0) {
+        //     gif1[0].style.display = 'block';
+        // }
+        // const win = document.getElementsByClassName("win");
+        // if (win.length > 0) {
+        //     win[0].style.display = 'block';
+        // }
+    } else {
+        spanElement.style.display = 'block';
+        document.getElementById("mark").innerHTML = "&#10007;"; // Add a cross mark
+        document.getElementById("mark").style.color = "red"; // Set color to red
+
+        element.appendChild(spanElement);
+        document.getElementById("yuckySound").play(); // Play the yucky sound
+        // updateScore(-1); // Decrement the score by 1
+        // const gif2 = document.getElementsByClassName("gif2");
+        // if (gif2.length > 0) {
+        //     gif2[0].style.display = 'block';
+        // }
+    }
+    // itemDiv.removeEventListener("click", click);
 
     itemCount++;
 
 }
-
-// function createDiv() {
-//     const itemsDiv = document.getElementById("item" + i);
-
-//     // Create two item elements
-//     const itemDiv1 = document.createElement('div');
-//     itemDiv1.classList.add("item");
-
-//     const itemDiv2 = document.createElement('div');
-//     itemDiv2.classList.add("item");
-
-//     // Create an image element for the item related to the main heading
-//     const imageElement1 = document.createElement('img');
-//     imageElement1.src = '/items/bicycle.webp';
-//     const imageElement2 = document.createElement('img');
-//     imageElement2.src = '/items/car.webp'; // Replace with the actual image path
-//     // imageElement.alt = ;
-
-//     // Append the image element to itemElement1
-//     itemDiv1.appendChild(imageElement1);
-//     itemDiv2.appendChild(imageElement2);
-
-
-//     // Append the item elements to item1Div
-//     itemsDiv.appendChild(itemDiv1);
-//     itemsDiv.appendChild(itemDiv2);
-
-
-
-// }
 
 theme = document.getElementById("theme");
 theme.onclick = function() {
