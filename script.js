@@ -131,6 +131,7 @@ function addRandomItems() {
 
         const itemDiv = document.createElement("div");
         itemDiv.classList.add("item");
+        itemDiv.id = "item" + i;
         const itemImg = document.createElement("img");
         itemImg.src = itemImage;
         itemImg.alt = itemAlt;
@@ -228,7 +229,8 @@ function clickHandler(event) {
     }
 
     // clickable.style.pointerEvents = 'none';
-
+    // const clickable = document.getElementById("item2");
+    // clickable.disabled = true;
     itemCount++;
 
 }
