@@ -36,10 +36,13 @@ restartButton.addEventListener("click", function() {
     removeItems();
 });
 nextButton.addEventListener("click", function() {
+    win.style.display = 'none';
     addRandomItems();
 
 });
 openButton.addEventListener("click", function() {
+    win.style.display = 'none';
+
     sidebar.style.display = 'flex';
     openButton.style.display = 'none';
     closeButton.style.display = 'block';
@@ -216,10 +219,10 @@ function clickHandler(event) {
         // if (gif1.length > 0) {
         //     gif1[0].style.display = 'block';
         // }
-        // const win = document.getElementsByClassName("win");
-        // if (win.length > 0) {
-        //     win[0].style.display = 'block';
-        // }
+        const win = document.getElementsByClassName("win");
+        if (win.length > 0) {
+            win[0].style.display = 'block';
+        }
     } else {
         spanElement.style.display = 'block';
         document.getElementById("mark").innerHTML = "&#10007;"; // Add a cross mark
