@@ -25,6 +25,12 @@ startButton.addEventListener("click", function() {
     addRandomItems();
 
 });
+resumeButton.addEventListener("click", function() {
+    sidebar.style.display = 'none';
+    openButton.style.display = 'block';
+    closeButton.style.display = 'none';
+
+});
 restartButton.addEventListener("click", function() {
     hideDisplay2()
     removeItems();
