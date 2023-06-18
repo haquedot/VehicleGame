@@ -18,6 +18,7 @@ const item1 = document.querySelector("#item1");
 const item2 = document.querySelector("#item2");
 const item3 = document.querySelector("#item3");
 const vehicleName = document.querySelector(".vehicle-name");
+const gif = document.querySelector(".gif1");
 
 
 startButton.addEventListener("click", function() {
@@ -37,12 +38,14 @@ restartButton.addEventListener("click", function() {
 });
 nextButton.addEventListener("click", function() {
     win.style.display = 'none';
+    gif.style.display = 'none';
+
     addRandomItems();
 
 });
 openButton.addEventListener("click", function() {
     win.style.display = 'none';
-
+    gif.style.display = 'none';
     sidebar.style.display = 'flex';
     openButton.style.display = 'none';
     closeButton.style.display = 'block';
@@ -208,32 +211,34 @@ function clickHandler(event) {
 
     // Check if the dropped item is a fruit
     if (element.classList.contains("vehicles")) {
-        spanElement.style.display = 'block';
-        document.getElementById("mark").innerHTML = "&#10003;"; // Add a tick mark
-        document.getElementById("mark").style.color = "green"; // Set color to green
+        // spanElement.style.display = 'block';
+        // document.getElementById("mark").innerHTML = "&#10003;"; // Add a tick mark
+        // document.getElementById("mark").style.color = "green"; // Set color to green
 
         document.getElementById("awesomeSound").play(); // Play the awesome sound
 
         updateScore(1); // Increment the score by 1
-        // const gif1 = document.getElementsByClassName("gif1");
-        // if (gif1.length > 0) {
-        //     gif1[0].style.display = 'block';
+        // if (gif.length > 0) {
+        gif.src = "WS2k.gif";
+        gif.style.display = 'block';
         // }
         const win = document.getElementsByClassName("win");
         if (win.length > 0) {
             win[0].style.display = 'block';
         }
     } else {
-        spanElement.style.display = 'block';
-        document.getElementById("mark").innerHTML = "&#10007;"; // Add a cross mark
-        document.getElementById("mark").style.color = "red"; // Set color to red
+        // const gif = document.getElementsByClassName("gif");
+        gif.src = "emoji-yuck.gif";
+        gif.style.display = 'block';
+        // spanElement.style.display = 'block';
+        // document.getElementById("mark").innerHTML = "&#10007;"; // Add a cross mark
+        // document.getElementById("mark").style.color = "red"; // Set color to red
 
-        element.appendChild(spanElement);
+        // element.appendChild(spanElement);
         document.getElementById("yuckySound").play(); // Play the yucky sound
         // updateScore(-1); // Decrement the score by 1
         // const gif2 = document.getElementsByClassName("gif2");
-        // if (gif2.length > 0) {
-        //     gif2[0].style.display = 'block';
+        // if (gif.length > 0) {
         // }
     }
 
