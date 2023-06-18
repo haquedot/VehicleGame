@@ -259,9 +259,9 @@ function updateScore(score) {
 theme = document.getElementById("theme");
 theme.onclick = function() {
     document.body.classList.toggle("dark-theme");
-    if (document.body.classList.contains('dark-theme')) {
-        theme.innerHTML = "LIGHT MODE";
-    } else {
-        theme.innerHTML = "DARK MODE";
-    }
+    // if (document.body.classList.contains('dark-theme')) {
+    //     theme.innerHTML = "LIGHT MODE";
+    // } else {
+    //     theme.innerHTML = "DARK MODE";
+    // }
 }

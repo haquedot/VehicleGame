@@ -5,9 +5,9 @@
         align-items: center;
         padding: 20px;
     }
-    .mode {
+    /* .mode {
         display: none;
-    }
+    } */
     .dark {
         display: "";
     }
