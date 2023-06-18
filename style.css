@@ -343,6 +343,35 @@ h1 {
     background-color: var(--hover-color);
 }
 
+.dark {
+    display: "none";
+}
+
+.mode {
+    display: flex;
+    margin: 0;
+    background-color: var(--button-color);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    height: 50px;
+    width: 200px;
+    padding: 10px 16px;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.modeDiv {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    margin-right: 30px;
+}
+
 .dark-theme {
     --body-color: #00063b;
     --div-color: #00063b;
